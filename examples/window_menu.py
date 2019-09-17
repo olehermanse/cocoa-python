@@ -11,7 +11,7 @@ NSMenuItem = ObjCClass('NSMenuItem')
 NSAutoreleasePool = ObjCClass('NSAutoreleasePool')
 
 def create_window():
-    print 'creating window'
+    print('creating window')
     frame = NSMakeRect(100, 100, 300, 300)
     window = NSWindow.alloc().initWithContentRect_styleMask_backing_defer_(
         frame,

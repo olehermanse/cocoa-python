@@ -30,12 +30,12 @@ class ObjCMethod(object):
         try:
             self.argtypes = [self.ctype_for_encoding(t) for t in self.argument_types]
         except:
-            print 'no argtypes encoding for %s (%s)' % (self.name, self.argument_types)
+            print('no argtypes encoding for %s (%s)' % (self.name, self.argument_types))
             self.argtypes = None
         try:
             self.restype = self.ctype_for_encoding(self.return_type)
         except:
-            print 'no restype encoding for %s (%s)' % (self.name, self.return_type)
+            print('no restype encoding for %s (%s)' % (self.name, self.return_type))
             self.restype = None
         self.func = None
 
@@ -55,7 +55,7 @@ class ObjCMethod(object):
         return self.prototype
 
     def __repr__(self):
-        return "<ObjCMethod: %s %s>" % (self.name, self.encoding)
+        return "<ObjCMethod: %s %s>" % (self.name, self.encoding) + str(self.__dict__)
 
     def get_callable(self):
         if not self.func:
@@ -90,7 +90,7 @@ class ObjCClass(object):
 
     def list_methods(self):
         for method in self.instance_methods:
-            print method
+            print(method)
 
     def __getattr__(self, name):
         if name in self.instance_methods:
@@ -125,21 +125,21 @@ class ObjCInstance(object):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print 'USAGE: python class_wrapper.py <Obj-C Class>'
+        print('USAGE: python class_wrapper.py <Obj-C Class>')
         exit(1)
 
     class_name = sys.argv[1]
     NSObject = ObjCClass(class_name)
-    print NSObject
+    print(NSObject)
 
     x = NSObject.alloc()
-    print x
-    print x.retainCount()
-    print x.retain()
-    print x.retainCount()
-    print x.retainCount()
-    print x.retain()
-    print x.retainCount()
-    print x.retain()
-    print x.retainCount()
-    print x.blah()
+    print(x)
+    print(x.retainCount())
+    print(x.retain())
+    print(x.retainCount())
+    print(x.retainCount())
+    print(x.retain())
+    print(x.retainCount())
+    print(x.retain())
+    print(x.retainCount())
+    print(x.blah())

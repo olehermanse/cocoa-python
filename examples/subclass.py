@@ -13,7 +13,7 @@ class MySubclass_Implementation(object):
     def init(self):
         self = ObjCInstance(send_super(self, 'init'))
         #self = ObjCInstance(send_message('NSObject', 'alloc'))
-        print 'inside init: self =', self
+        print('inside init: self =', self)
         self.x = 1
         return self
 
@@ -22,23 +22,23 @@ class MySubclass_Implementation(object):
     # returns void.
     @MySubclass.method('v')
     def doSomething(self):
-        print 'doSomething', self
-        print 'x =', self.x
+        print('doSomething', self)
+        print('x =', self.x)
         self.x += 1
 
     @MySubclass.method('v@')
     def doSomethingElse(self, other):
-        print 'doSomethingElse', self, other
+        print('doSomethingElse', self, other)
         other.doSomething()
 
     @MySubclass.method('v'+PyObjectEncoding)
     def takePyObject(self, pyobject):
-        print 'takePyObject', self, pyobject
-        print 'x =', self.x
+        print('takePyObject', self, pyobject)
+        print('x =', self.x)
 
     @MySubclass.method('v')
     def dealloc(self):
-        print 'dealloc', self
+        print('dealloc', self)
         send_super(self, 'dealloc')
 
 ######################################################################
@@ -48,14 +48,14 @@ if __name__ == '__main__':
     MySubclass = ObjCClass('MySubclass')
 
     myobject1 = MySubclass.alloc().init()
-    print 'after init: myobject1 =', myobject1
+    print('after init: myobject1 =', myobject1)
 
     myobject1.doSomething()
 
     print
 
     myobject2 = MySubclass.alloc().init()
-    print 'after init: myobject2 =', myobject2
+    print('after init: myobject2 =', myobject2)
     myobject2.doSomething()
     #myobject2.doSomething()
     #myobject2.doSomethingElse()

@@ -38,7 +38,7 @@ class ObjCMethod(object):
         try:
             self.argtypes = [self.ctype_for_encoding(t) for t in self.argument_types]
         except:
-            #print 'no argtypes encoding for %s (%s)' % (self.name, self.argument_types)
+            #print('no argtypes encoding for %s (%s)' % (self.name, self.argument_types))
             self.argtypes = None
         # Get types for the return type.
         try:
@@ -49,7 +49,7 @@ class ObjCMethod(object):
             else:
                 self.restype = self.ctype_for_encoding(self.return_type)
         except:
-            #print 'no restype encoding for %s (%s)' % (self.name, self.return_type)
+            #print('no restype encoding for %s (%s)' % (self.name, self.return_type))
             self.restype = None
         self.func = None
 
@@ -291,7 +291,7 @@ class ObjCSubclass2(object):
     It consists primarily of function decorators which you use to add methods
     to the subclass."""
     def __init__(self, superclass, name):
-        print 'ObjCSubclass2.init'
+        print('ObjCSubclass2.init')
         self._imp_table = {}
         self.name = name
         self.objc_cls = create_subclass(superclass, name)
@@ -362,12 +362,12 @@ class MySubclassImplementation(object):
         if not hasattr(self, 'x'):
             self.x = 0
         self.x += 1
-        print 'doSomething', self.x
+        print('doSomething', self.x)
         self.doSomething2()
 
     @MySubclass.method('v')
     def doSomething2(self):
-        print 'doSomething2', self.x
+        print('doSomething2', self.x)
 
 def run_window():
     NSAutoreleasePool = ObjCClass('NSAutoreleasePool')
@@ -393,51 +393,51 @@ def run_window():
 
 def stupid_stuff():
     NSObject = ObjCClass(class_name)
-    print NSObject
-    print objc.object_getClassName(NSObject.ptr)
+    print(NSObject)
+    print(objc.object_getClassName(NSObject.ptr))
 
     x = NSObject.alloc()
-    print objc.object_getClassName(x.ptr)
-    print 'x', x
-    print 'x.init', x.init
-    print 'x.init()', x.init()
-    print 'x.objc_class', x.objc_class
-    print x.retainCount()
-    print x.retain()
-    print x.retainCount()
-    print x.retainCount()
-    print x.retain()
-    print x.retainCount()
-    print x.retain()
-    print x.retainCount()
+    print(objc.object_getClassName(x.ptr))
+    print('x', x)
+    print('x.init', x.init)
+    print('x.init()', x.init())
+    print('x.objc_class', x.objc_class)
+    print(x.retainCount())
+    print(x.retain())
+    print(x.retainCount())
+    print(x.retainCount())
+    print(x.retain())
+    print(x.retainCount())
+    print(x.retain())
+    print(x.retainCount())
     y = NSObject.alloc()
-    print 'y', y
-    print 'y.init()', y.init()
-    print 'y.objc_class', y.objc_class
-    print y.retainCount()
-    print y.retain()
-    print y.retainCount()
+    print('y', y)
+    print('y.init()', y.init())
+    print('y.objc_class', y.objc_class)
+    print(y.retainCount())
+    print(y.retain())
+    print(y.retainCount())
 
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print 'USAGE: python class_wrapper3.py <Obj-C Class>'
+        print('USAGE: python class_wrapper3.py <Obj-C Class>')
         exit(1)
 
     class_name = sys.argv[1]
 
     MySubclass = ObjCClass('MySubclass')
-    print MySubclass
+    print(MySubclass)
     x = MySubclass.alloc().init()
-    print x
+    print(x)
     x.doSomething()
     x.doSomething()
     x.doSomething()
 
-    print ObjCInstance._cached_objects.items()
+    print(ObjCInstance._cached_objects.items())
     x.release()
     del x
 
-    print ObjCInstance._cached_objects.items()
+    print(ObjCInstance._cached_objects.items())
 
     #run_window()

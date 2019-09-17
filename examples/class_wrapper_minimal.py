@@ -1,4 +1,4 @@
-# An extremely minimal (too minimal?) python wrapper 
+# An extremely minimal (too minimal?) python wrapper
 # around the Objective-C id type.
 
 from objc_runtime import *
@@ -18,14 +18,14 @@ class ObjCId(object):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print 'USAGE: python class_wrapper_minimal.py <Obj-C Class>'
+        print('USAGE: python class_wrapper_minimal.py <Obj-C Class>')
         exit(1)
 
 
 class_name = sys.argv[1]
 obj = ObjCId(get_class(class_name))
 x = obj.alloc(restype=ObjCId).init(restype=ObjCId)
-print x
-print x.retainCount(restype=c_int)
-print x.retain(restype=ObjCId)
-print x.retainCount(restype=c_int)
+print(x)
+print(x.retainCount(restype=c_int))
+print(x.retain(restype=ObjCId))
+print(x.retainCount(restype=c_int))

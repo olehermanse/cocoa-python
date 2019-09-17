@@ -21,4 +21,4 @@ if __name__ == '__main__':
     pool = NSAutoreleasePool.alloc().init()
     # Finally we can create and display an NSOpenPanel.
     path = show_open_panel()
-    print path
+    print(path)

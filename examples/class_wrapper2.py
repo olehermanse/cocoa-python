@@ -33,7 +33,7 @@ class ObjCMethod(object):
         try:
             self.argtypes = [self.ctype_for_encoding(t) for t in self.argument_types]
         except:
-            #print 'no argtypes encoding for %s (%s)' % (self.name, self.argument_types)
+            #print('no argtypes encoding for %s (%s)' % (self.name, self.argument_types))
             self.argtypes = None
         # Get types for the return type.
         try:
@@ -44,7 +44,7 @@ class ObjCMethod(object):
             else:
                 self.restype = self.ctype_for_encoding(self.return_type)
         except:
-            #print 'no restype encoding for %s (%s)' % (self.name, self.return_type)
+            #print('no restype encoding for %s (%s)' % (self.name, self.return_type))
             self.restype = None
         self.func = None
 
@@ -249,31 +249,31 @@ class ObjCInstance(object):
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
-        print 'USAGE: python class_wrapper2.py <Obj-C Class>'
+        print('USAGE: python class_wrapper2.py <Obj-C Class>')
         exit(1)
 
     class_name = sys.argv[1]
     NSObject = objc_class_registry.register(class_name)
-    print NSObject
-    print objc.object_getClassName(NSObject.ptr)
+    print(NSObject)
+    print(objc.object_getClassName(NSObject.ptr))
 
     x = NSObject.alloc()
-    print objc.object_getClassName(x.ptr)
-    print 'x', x
-    print 'x.init', x.init
-    print 'x.init()', x.init()
-    print x.retainCount()
-    print x.retain()
-    print x.retainCount()
-    print x.retainCount()
-    print x.retain()
-    print x.retainCount()
-    print x.retain()
-    print x.retainCount()
+    print(objc.object_getClassName(x.ptr))
+    print('x', x)
+    print('x.init', x.init)
+    print('x.init()', x.init())
+    print(x.retainCount())
+    print(x.retain())
+    print(x.retainCount())
+    print(x.retainCount())
+    print(x.retain())
+    print(x.retainCount())
+    print(x.retain())
+    print(x.retainCount())
     y = NSObject.alloc()
-    print 'y', y
-    print 'y.init()', y.init()
-    print y.retainCount()
-    print y.retain()
-    print y.retainCount()
-    #print x.blah()
+    print('y', y)
+    print('y.init()', y.init())
+    print(y.retainCount())
+    print(y.retain())
+    print(y.retainCount())
+    #print(x.blah())
