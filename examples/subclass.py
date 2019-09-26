@@ -9,7 +9,7 @@ class MySubclass_Implementation(object):
     # Through some magic, the self variable received by these methods is
     # an instance of the python ObjCInstance object.  It has an attribute
     # objc_cmd set to the hidden _cmd argument.
-    @MySubclass.method('@')
+    @MySubclass.method(b'@')
     def init(self):
         self = ObjCInstance(send_super(self, 'init'))
         #self = ObjCInstance(send_message('NSObject', 'alloc'))
@@ -20,23 +20,23 @@ class MySubclass_Implementation(object):
     # A normal objective-c instance method.  This gets added to the
     # objective-c class.  The type-encoding string says that this method
     # returns void.
-    @MySubclass.method('v')
+    @MySubclass.method(b'v')
     def doSomething(self):
         print('doSomething', self)
         print('x =', self.x)
         self.x += 1
 
-    @MySubclass.method('v@')
+    @MySubclass.method(b'v@')
     def doSomethingElse(self, other):
         print('doSomethingElse', self, other)
         other.doSomething()
 
-    @MySubclass.method('v'+PyObjectEncoding)
+    @MySubclass.method(b'v'+PyObjectEncoding)
     def takePyObject(self, pyobject):
         print('takePyObject', self, pyobject)
         print('x =', self.x)
 
-    @MySubclass.method('v')
+    @MySubclass.method(b'v')
     def dealloc(self):
         print('dealloc', self)
         send_super(self, 'dealloc')

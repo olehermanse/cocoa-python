@@ -1019,11 +1019,11 @@ def convert_method_arguments(encoding, args):
 #
 # then add methods with:
 #
-#     @MySubclass.method('v')
+#     @MySubclass.method(b'v')
 #     def methodThatReturnsVoid(self):
 #         pass
 #
-#     @MySubclass.method('Bi')
+#     @MySubclass.method(b'Bi')
 #     def boolReturningMethodWithInt_(self, x):
 #         return True
 #

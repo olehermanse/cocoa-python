@@ -357,7 +357,7 @@ class ObjCSubclass2(object):
 class MySubclassImplementation(object):
     MySubclass = ObjCSubclass2('NSObject', 'MySubclass')
 
-    @MySubclass.method('v')
+    @MySubclass.method(b'v')
     def doSomething(self):
         if not hasattr(self, 'x'):
             self.x = 0
@@ -365,7 +365,7 @@ class MySubclassImplementation(object):
         print('doSomething', self.x)
         self.doSomething2()
 
-    @MySubclass.method('v')
+    @MySubclass.method(b'v')
     def doSomething2(self):
         print('doSomething2', self.x)
 
